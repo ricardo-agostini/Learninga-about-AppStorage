@@ -7,15 +7,32 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
+    @AppStorage("name") var currentUserName: String?
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        
+        VStack(spacing: 20) {
+            
+            Text(currentUserName ?? "Add Name Here")
+            
+            if let name = currentUserName {
+                Text(name)
+            }
+            
+            Button("Save".uppercased()) {
+                let name = "Emily"
+                currentUserName = name
+                
+            }
+            
+            
+            
         }
-        .padding()
+
     }
 }
 
